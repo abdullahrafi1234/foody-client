@@ -4,7 +4,7 @@ import Navbar from "../pages/Navbar/Navbar";
 
 const Root = () => {
     return (
-        <div className="mx-auto max-w-7xl">
+        <div className="mx-auto max-w-7xl workSans">
             <Navbar></Navbar>
             <h3>body</h3>
             <Footer></Footer>

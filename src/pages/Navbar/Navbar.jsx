@@ -31,10 +31,15 @@ const Navbar = () => {
     // }
 
     const navLinks = <>
-        <li><NavLink to={'/'}>Home</NavLink></li>
-        <li><NavLink to={'/all-tourists-spot'}>All Tourists Spot</NavLink></li>
-        <li><NavLink to={'/add-tourists-spot'}>Add Tourists Spot</NavLink></li>
-        <li><NavLink to={'/myList'}>My List</NavLink></li>
+        <li><NavLink className={({ isActive }) => isActive ? 'btn btn-outline btn-success font-semibold' : 'btn font-medium btn-ghost'} to={'/'}>Home</NavLink></li>
+
+        <li><NavLink className={({ isActive }) => isActive ? 'btn btn-outline btn-success font-semibold' : 'btn font-medium btn-ghost'} to={'/available-food'}>Available Food</NavLink></li>
+
+        <li><NavLink className={({ isActive }) => isActive ? 'btn btn-outline btn-success font-semibold' : 'btn font-medium btn-ghost'} to={'/add-food'}>Add Food</NavLink></li>
+
+        <li><NavLink className={({ isActive }) => isActive ? 'btn btn-outline btn-success font-semibold' : 'btn font-medium btn-ghost'} to={'/my-foods'}>My Foods</NavLink></li>
+
+        <li><NavLink className={({ isActive }) => isActive ? 'btn btn-outline btn-success font-semibold' : 'btn font-medium btn-ghost'} to={'/my-food-request'}>My Food Request</NavLink></li>
 
         {/* {
             user ? <li><NavLink to={'/update-profile'}>Update Profile</NavLink></li> : ''
@@ -53,7 +58,8 @@ const Navbar = () => {
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                     </div>
-                    <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 font-semibold">
+
+                    <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 font-medium">
                         {navLinks}
                     </ul>
                 </div>
@@ -68,11 +74,12 @@ const Navbar = () => {
                 </div>
             </div>
             <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal px-1 font-semibold">
+                <ul className="menu menu-horizontal px-1 font-medium">
                     {navLinks}
                 </ul>
             </div>
             <div className="navbar-end">
+                {/* theme part */}
                 <div className="p-4">
                     <label className="cursor-pointer grid place-items-center">
                         <input onChange={handleTheme} type="checkbox" className="toggle theme-controller bg-base-content row-start-1 col-start-1 col-span-2" />
@@ -83,12 +90,12 @@ const Navbar = () => {
 
 
                 <div className="">
-                    <Link className="btn rounded-xl bg-[#38bdf8] text-white border-none" to={'/login'}>Login</Link>
+                    <Link className="btn btn-success rounded-xl bg-green-700 text-white border-none" to={'/login'}>Login</Link>
                 </div>
 
                 {/* {
                     user ?
-  
+
                         <div className="dropdown dropdown-hover mr-8">
                             <div tabIndex={0} role="button" className=" hover m-1">
                                 <img className="w-12 rounded-full" src={user?.photoURL || 'user.png'} alt="" />
@@ -100,7 +107,7 @@ const Navbar = () => {
                         </div>
                         :
                         <div className="">
-                            <Link className="btn rounded-xl bg-[#38bdf8] text-white border-none" to={'/login'}>Login</Link>
+                            <Link className="btn btn-success rounded-xl bg-green-700 text-white border-none" to={'/login'}>Login</Link>
                         </div>
                 } */}
             </div>
