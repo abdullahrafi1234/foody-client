@@ -22,28 +22,7 @@ const Banner = () => {
 
 
             >
-                <SwiperSlide>
-                    <div className="mt-12">
-                        <div className="hero p-8 rounded-3xl  border">
-                            <div className="hero-content lg:h-[400px] md:h-[400px]  flex-col flex md:flex-row-reverse lg:flex-row-reverse ">
-                                <div className="lg:ml-36">
-                                    <img width={'1050px'} src="food1.avif" className=" rounded-lg" />
-                                </div>
-                                <div className="space-y-4 pl-12">
-                                    <h1 className="text-5xl font-bold mb-8">From <span className='text-green-700'>Our</span> Kitchen to Your Table</h1>
-                                    <p>Located in the heart of the city, our restaurant offers a delightful fusion of flavors</p>
-                                    <div className=' flex gap-3'>
-                                        <button className="btn btn-success text-white font-bold bg-green-700">Explore Food</button>
-                                        <Link to={'/add-food'}>
-                                            <button className="btn btn-success btn-outline text-white font-bold ">Add Food</button>
-                                        </Link>
-                                    </div>
 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </SwiperSlide>
                 <SwiperSlide>
                     <div className="mt-12">
                         <div className="hero p-8 rounded-3xl  border">
@@ -70,6 +49,30 @@ const Banner = () => {
                         </div>
                     </div>
                 </SwiperSlide>
+
+                <SwiperSlide>
+                    <div className="mt-12">
+                        <div className="hero p-8 rounded-3xl  border">
+                            <div className="hero-content lg:h-[400px] md:h-[400px]  flex-col flex md:flex-row-reverse lg:flex-row-reverse ">
+                                <div className="lg:ml-36">
+                                    <img width={'1050px'} src="food1.avif" className=" rounded-lg" />
+                                </div>
+                                <div className="space-y-4 pl-12">
+                                    <h1 className="text-5xl font-bold mb-8">From <span className='text-green-700'>Our</span> Kitchen to Your Table</h1>
+                                    <p>Located in the heart of the city, our restaurant offers a delightful fusion of flavors</p>
+                                    <div className=' flex gap-3'>
+                                        <button className="btn btn-success text-white font-bold bg-green-700">Explore Food</button>
+                                        <Link to={'/add-food'}>
+                                            <button className="btn btn-success btn-outline text-white font-bold ">Add Food</button>
+                                        </Link>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </SwiperSlide>
+
                 <SwiperSlide>
                     <div className="mt-12">
                         <div className="hero p-8 rounded-3xl  border">
