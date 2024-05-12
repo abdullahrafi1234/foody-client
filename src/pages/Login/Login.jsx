@@ -1,29 +1,66 @@
 import { Link } from "react-router-dom";
-import { FaFacebook,  } from "react-icons/fa";
+import { FaFacebook, } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
+import { Helmet } from "react-helmet-async";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Login = () => {
+    const { loginUser, googleLogin } = useContext(AuthContext)
 
     const handleLogin = e => {
-        e.preventDefault()
+        e.preventDefault();
         const form = e.target;
         const email = form.email.value;
-        const password = form.password.value;
+        const password = form.password.value
+        console.log(email, password,);
 
-        console.log(email, password);
-        // create user
-        // createUser(email, password)
-        // .then(result => {
-        //     console.log(result.user);
-        // })
-        // .catch(error => {
-        //     console.log(error);
-        // })
+        loginUser(email, password)
+            .then(result => {
+                console.log(result.user);
+                // navigate(location?.state ? location.state : '/')
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Logged in Successfully',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                })
+            })
+            .catch(error => {
+                console.log(error)
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'Please Write Your Correct Gmail and Password!!!',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                })
+            })
+    }
+
+    const handleGoogleLogin = () => {
+        googleLogin()
+            .then(result => {
+                console.log(result.user)
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Logged in Successfully',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                })
+            })
+            .catch(error => {
+                console.log(error)
+            })
     }
 
 
     return (
         <div className=" ">
+            <Helmet>
+                <title>Foody | Login</title>
+            </Helmet>
+
             <div className=" text-center md:items-center lg:items-start flex flex-col lg:flex-row gap-2 ">
                 <div className=" items-center justify-center text-center lg:text-left lg:w-1/2 rounded-lg">
 
@@ -49,23 +86,27 @@ const Login = () => {
                         <div className="form-control mt-6">
                             <button className="btn btn-success text-white bg-green-700">Login</button>
                         </div>
-                        <div className="flex items-center pt-3">
-                            <p className="border-b"></p>
-                            <p>or</p>
-                            <p className="border-b"></p>
-                        </div>
-
-                        <div className="form-control mt-4">
-                            <button className="btn btn-outline"> <FcGoogle className="text-3xl"></FcGoogle> Google Login</button>
-                        </div>
-
-                        <div className="form-control mt-2">
-                            <button className="btn btn-outline  "> <FaFacebook className="text-3xl text-blue-700"></FaFacebook> Facebook Login</button>
-                        </div>
-
 
                         <p className='text-center pt-3'>Don't have an account?<Link to={'/register'}> <span className='text-green-500 font-bold'>Create an account</span></Link> </p>
                     </form>
+
+                    <div className="flex  text-center justify-center items-center  ">
+                        <p className="border-b "></p>
+                        <p className="border-b-2 border-green-400">or</p>
+                        <p className="border-b"></p>
+                    </div>
+
+
+
+                    <div className="form-control mt-2 px-8">
+                        <button onClick={handleGoogleLogin} className="btn btn-outline  mt-4 px-8"> <FcGoogle className="text-3xl"></FcGoogle> Google Login</button>
+                    </div>
+
+
+                    <div className="form-control mt-2 px-8">
+                        <button className="btn btn-outline  "> <FaFacebook className="text-3xl text-blue-700"></FaFacebook> Facebook Login</button>
+                    </div>
+
                 </div>
             </div>
         </div>

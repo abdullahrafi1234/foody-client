@@ -1,10 +1,11 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-// import { AuthContext } from "../../providers/AuthProvider";
+import { AuthContext } from "../../provider/AuthProvider";
+
 
 
 const Navbar = () => {
-    // const { user, logOut } = useContext(AuthContext)
+    const { user, logOut } = useContext(AuthContext)
     const [theme, setTheme] = useState('light')
     // console.log(theme);
 
@@ -24,32 +25,34 @@ const Navbar = () => {
         }
     }
 
-    // const handleLogOut = () => {
-    //     logOut()
-    //         .then()
-    //         .catch()
-    // }
+    const handleLogOut = () => {
+        logOut()
+            .then()
+            .catch()
+    }
 
     const navLinks = <>
         <li><NavLink className={({ isActive }) => isActive ? 'btn btn-outline btn-success font-semibold' : 'btn font-medium btn-ghost'} to={'/'}>Home</NavLink></li>
 
         <li><NavLink className={({ isActive }) => isActive ? 'btn btn-outline btn-success font-semibold' : 'btn font-medium btn-ghost'} to={'/available-food'}>Available Food</NavLink></li>
+        {
+            user? <li><NavLink className={({ isActive }) => isActive ? 'btn btn-outline btn-success font-semibold' : 'btn font-medium btn-ghost'} to={'/add-food'}>Add Food</NavLink></li>: ''
+        }
 
-        <li><NavLink className={({ isActive }) => isActive ? 'btn btn-outline btn-success font-semibold' : 'btn font-medium btn-ghost'} to={'/add-food'}>Add Food</NavLink></li>
+        {
+            user? <li><NavLink className={({ isActive }) => isActive ? 'btn btn-outline btn-success font-semibold' : 'btn font-medium btn-ghost'} to={'/my-foods'}>My Foods</NavLink></li>: ''
+        }
 
-        <li><NavLink className={({ isActive }) => isActive ? 'btn btn-outline btn-success font-semibold' : 'btn font-medium btn-ghost'} to={'/my-foods'}>My Foods</NavLink></li>
+        {
+            user?<li><NavLink className={({ isActive }) => isActive ? 'btn btn-outline btn-success font-semibold' : 'btn font-medium btn-ghost'} to={'/my-food-request'}>My Food Request</NavLink></li> : ''
+        }
 
-        <li><NavLink className={({ isActive }) => isActive ? 'btn btn-outline btn-success font-semibold' : 'btn font-medium btn-ghost'} to={'/my-food-request'}>My Food Request</NavLink></li>
-
-        <li><NavLink className={({ isActive }) => isActive ? 'btn btn-outline btn-success font-semibold' : 'btn font-medium btn-ghost'} to={'/register'}>Register</NavLink></li>
+        {
+            !user? <li><NavLink className={({ isActive }) => isActive ? 'btn btn-outline btn-success font-semibold' : 'btn font-medium btn-ghost'} to={'/register'}>Register</NavLink></li> : ''
+        }
 
         {/* {
             user ? <li><NavLink to={'/update-profile'}>Update Profile</NavLink></li> : ''
-        } */}
-
-        {/* <li><NavLink to={'/contact-us'}>Contact Us</NavLink></li> */}
-        {/* {
-            !user ? <li><NavLink to={'/register'}>Register</NavLink></li> : ''
         } */}
     </>
 
@@ -91,11 +94,9 @@ const Navbar = () => {
                 </div>
 
 
-                <div className="">
-                    <Link className="btn btn-success rounded-xl bg-green-700 text-white border-none" to={'/login'}>Login</Link>
-                </div>
 
-                {/* {
+
+                {
                     user ?
 
                         <div className="dropdown dropdown-hover mr-8">
@@ -104,14 +105,14 @@ const Navbar = () => {
                             </div>
                             <ul tabIndex={0} className="dropdown-content z-[1] menu p-4 shadow bg-base-100 rounded-lg w-[120px]">
                                 <li>{user?.displayName || 'Name Not Found'}</li>
-                                <li><button onClick={handleLogOut} className=" rounded-xl bg-[#38bdf8] text-white border-none">Log Out</button></li>
+                                <li><button onClick={handleLogOut} className=" btn btn-success rounded-xl bg-green-700 text-white border-none">Log Out</button></li>
                             </ul>
                         </div>
                         :
                         <div className="">
                             <Link className="btn btn-success rounded-xl bg-green-700 text-white border-none" to={'/login'}>Login</Link>
                         </div>
-                } */}
+                }
             </div>
         </div>
     );
