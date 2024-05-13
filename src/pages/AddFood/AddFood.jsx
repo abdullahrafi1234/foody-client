@@ -19,7 +19,7 @@ const AddFood = () => {
         const photo = form.photo.value;
         const name = user?.displayName || 'Name Not Found'
         const email = user?.email
-        const userImage = user?.photoURL || 'user.png'
+        const userImage = user?.photoURL || 'https://i.ibb.co/fYjTTRS/user.png'
 
         const addFood = { foodName, quantity, location, date, notes, status, photo, name, email, userImage }
 

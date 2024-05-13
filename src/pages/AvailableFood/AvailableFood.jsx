@@ -11,14 +11,14 @@ const AvailableFood = () => {
     const { user } = useContext(AuthContext)
 
     return (
-        <div>
+        <div className='mb-24'>
             <Helmet>
                 <title>Foody | AvailableFood</title>
             </Helmet>
             <div className="mt-20 text-center space-y-4 mb-6">
 
                 <h3 className="text-4xl text-center font-bold">Available Food Dishes</h3>
-                <p>Feature your on-site dining options, whether its a gourmet <br /> restaurant, cozy café, or stylish bar, focusing on the culinary delights and ambiance.</p>
+              
             </div>
             <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8">
                 {
