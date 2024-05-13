@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../provider/AuthProvider';
 import { IoLocationOutline } from 'react-icons/io5';
+import Swal from 'sweetalert2';
 
 const FoodDetails = () => {
     const { user } = useContext(AuthContext)
@@ -28,15 +29,6 @@ const FoodDetails = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data)
-                // if (data.insertedId) {
-                //     Swal.fire({
-                //         title: 'Success!',
-                //         text: 'Food Added Successfully',
-                //         icon: 'success',
-                //         confirmButtonText: 'OK'
-                //     })
-                // }
-                // form.reset()
             })
     }
 
