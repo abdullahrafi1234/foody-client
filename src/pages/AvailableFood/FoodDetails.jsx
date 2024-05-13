@@ -17,7 +17,8 @@ const FoodDetails = () => {
         const additionalNotes = form.additionalNotes.value;
         const newStatus = 'Requested'
         const foodId = _id
-        const request = { foodName, quantity, location, date, additionalNotes, newStatus, photo, foodId, email, name, userImage }
+        const amount = form.amount.value;
+        const request = { foodName, quantity, location, date, additionalNotes, newStatus, photo, foodId, email, name, userImage, amount }
         console.log(request)
 
 
@@ -77,11 +78,11 @@ const FoodDetails = () => {
                             {/* Open the modal using document.getElementById('ID').showModal() method */}
 
                             <button className="" onClick={() => document.getElementById('my_modal_5').showModal()}>
-                                <div className='mt-4'>
+                                <p className='mt-4'>
                                     <Link >
                                         <button className='btn btn-success btn-outline'>Food Request</button>
                                     </Link>
-                                </div>
+                                </p>
                             </button>
                             <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
                                 <div className="modal-box">
@@ -179,8 +180,8 @@ const FoodDetails = () => {
                                             </div>
                                         </div>
                                         {/* photo */}
-                                        <div>
-                                            <div className="form-control md:w-full">
+                                        <div className='md:flex gap-10'>
+                                            <div className="form-control md:w-1/2">
                                                 <label className="label">
 
                                                     <span className="label-text">Additional Notes</span>
@@ -188,6 +189,16 @@ const FoodDetails = () => {
                                                 <label className="input-group">
                                                     <input type="text"
                                                         name="additionalNotes" placeholder="Write Your Notes" defaultValue={notes} className="input input-bordered w-full" />
+                                                </label>
+                                            </div>
+                                            <div className="form-control md:w-1/2">
+                                                <label className="label">
+
+                                                    <span className="label-text">Donation Amount</span>
+                                                </label>
+                                                <label className="input-group ">
+                                                    <input type="text"
+                                                        name="amount" placeholder="00 $ " required className="input input-bordered w-full" />
                                                 </label>
                                             </div>
                                         </div>

@@ -1,10 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import Swal from "sweetalert2";
 
 const Register = () => {
+    const navigate = useNavigate()
 
     const {createUser} = useContext(AuthContext)
 
@@ -28,6 +29,7 @@ const Register = () => {
         createUser(email, password)
         .then(result => {
             console.log(result.user);
+            navigate('/')
             Swal.fire({
                 title: 'Success!',
                 text: 'Created Your Successfully',
