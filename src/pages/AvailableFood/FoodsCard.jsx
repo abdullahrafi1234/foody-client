@@ -43,14 +43,14 @@ const FoodsCard = ({food}) => {
                     <p className="">
                         {
                             food.notes.length > 70 ?
-                                <p> <span className="font-bold">Notes:</span> {food.notes.slice(0, 70)}<Link to={`/add-food`} className=' font-medium py-2'>...</Link> </p>  :
+                                <p> <span className="font-bold">Notes:</span> {food.notes.slice(0, 70)}<Link to={`/food-details/${food._id}`} className=' font-medium py-2'>...</Link> </p>  :
                                 <p>{food.notes}</p>
 
                         }
                         </p>
                 </div>            
 
-                <Link to={`/add-food/${food._id}`} className='text-red-400 font-medium pl-14 py-2 pb-8'>
+                <Link to={`/food-details/${food._id}`} className='text-red-400 font-medium pl-14 py-2 pb-8'>
                     <button className="btn btn-outline btn-success">View Details</button>
                 </Link>
 

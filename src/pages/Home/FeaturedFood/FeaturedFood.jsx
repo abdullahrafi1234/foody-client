@@ -11,7 +11,7 @@ const FeaturedFood = ({ food }) => {
             <div className="my-4">
                 <div className="card bg-base-100 shadow-xl ">
                     <div className='px-10 pt-4 flex gap-4 items-center'>
-                        <img className='w-12 rounded-full' src={user?.photoURL || 'user.png'} alt="" />
+                        <img className='w-12 rounded-full' src={food.userImage || 'user.png'} alt="" />
                         <p className='font-semibold'>{food.name}
                             {/* <p className='font-normal'>{food.date}</p> */}
                         </p>
@@ -45,7 +45,7 @@ const FeaturedFood = ({ food }) => {
                         <p className="">
                             {
                                 food.notes.length > 70 ?
-                                    <p> <span className="font-bold">Notes:</span> {food.notes.slice(0, 70)}<Link to={``} className=' font-medium py-2'>...</Link> </p>  :
+                                    <p> <span className="font-bold">Notes:</span> {food.notes.slice(0, 70)}..... </p>  :
                                     <p>{food.notes}</p>
 
                             }

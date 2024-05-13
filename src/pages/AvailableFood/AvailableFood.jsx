@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../provider/AuthProvider';
 import FoodsCard from './FoodsCard';
+import { Helmet } from 'react-helmet-async';
 
 const AvailableFood = () => {
     const foods = useLoaderData()
@@ -11,7 +12,9 @@ const AvailableFood = () => {
 
     return (
         <div>
-
+            <Helmet>
+                <title>Foody | AvailableFood</title>
+            </Helmet>
             <div className="mt-20 text-center space-y-4 mb-6">
 
                 <h3 className="text-4xl text-center font-bold">Available Food Dishes</h3>
