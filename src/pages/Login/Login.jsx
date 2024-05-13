@@ -56,7 +56,7 @@ const Login = () => {
 
 
     return (
-        <div className=" ">
+        <div className="">
             <Helmet>
                 <title>Foody | Login</title>
             </Helmet>

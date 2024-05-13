@@ -1,5 +1,7 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../provider/AuthProvider';
+import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet-async';
 
 const AddFood = () => {
     const { user } = useContext(AuthContext)
@@ -16,26 +18,40 @@ const AddFood = () => {
         const status = form.status.value;
         const photo = form.photo.value;
         const name = user?.displayName || 'Name Not Found'
-        const email = user.email
+        const email = user?.email
+        const userImage = user?.photoURL || 'user.png'
 
-        const addFood = { foodName, quantity, location, date, notes, status, photo, name, email}
+        const addFood = { foodName, quantity, location, date, notes, status, photo, name, email, userImage }
 
-        fetch('http://localhost:5000/addFood',{
+        fetch('http://localhost:5000/addFood', {
             method: 'POST',
-            headers: {'content-type': 'application/json'},
+            headers: { 'content-type': 'application/json' },
             body: JSON.stringify(addFood)
-        } )
-        .then(res => res.json())
-        .then(data => {
-            console.log(data)
         })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.insertedId) {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Food Added Successfully',
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    })
+                }
+                form.reset()
+            })
 
     }
 
     return (
-        <div className="lg:mt-16 md:mt-28 lg:px-20 mt-28 mb-32 bg-sky-100">
+        <div className="lg:mt-16 md:mt-28 lg:px-20 mt-28 mb-32 bg-sky-100 rancho">
+
+            <Helmet>
+                <title>Foody | AddFood </title>
+            </Helmet>
             <div className=" p-24">
-                <h3 className="text-3xl font-bold text-center mb-6">Add Your Food</h3>
+                <h3 className="text-3xl font-bold text-center mb-6 uppercase">Add Your <span className='text-green-700'> F<span className='text-red-500'>oo</span>d</span></h3>
 
 
                 <div className='space-y-3'>
@@ -115,7 +131,8 @@ const AddFood = () => {
                             </label>
                             <label className="input-group">
                                 <input type="text"
-                                    name="status" readOnly value={'Available'} placeholder="Food Status" className="input input-bordered w-full" />
+                                    name="status" value={'Available'}
+                                    readOnly placeholder="Food Status" className="input input-bordered w-full" />
                             </label>
                         </div>
                     </div>
@@ -136,7 +153,7 @@ const AddFood = () => {
                     {/* btn */}
 
                     <div className="mt-8">
-                        <input className="btn  btn-block bg-black text-white " type="submit" value="Add Tourist Spot" />
+                        <input className="btn  btn-success btn-block text-white " type="submit" value="Add Food" />
 
                     </div>
                 </form>

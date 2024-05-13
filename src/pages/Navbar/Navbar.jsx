@@ -35,20 +35,22 @@ const Navbar = () => {
         <li><NavLink className={({ isActive }) => isActive ? 'btn btn-outline btn-success font-semibold' : 'btn font-medium btn-ghost'} to={'/'}>Home</NavLink></li>
 
         <li><NavLink className={({ isActive }) => isActive ? 'btn btn-outline btn-success font-semibold' : 'btn font-medium btn-ghost'} to={'/available-food'}>Available Food</NavLink></li>
-        {
+        {/* {
             user? <li><NavLink className={({ isActive }) => isActive ? 'btn btn-outline btn-success font-semibold' : 'btn font-medium btn-ghost'} to={'/add-food'}>Add Food</NavLink></li>: ''
+        } */}
+
+        <li><NavLink className={({ isActive }) => isActive ? 'btn btn-outline btn-success font-semibold' : 'btn font-medium btn-ghost'} to={'/add-food'}>Add Food</NavLink></li>
+
+        {
+            user ? <li><NavLink className={({ isActive }) => isActive ? 'btn btn-outline btn-success font-semibold' : 'btn font-medium btn-ghost'} to={'/my-foods'}>My Foods</NavLink></li> : ''
         }
 
         {
-            user? <li><NavLink className={({ isActive }) => isActive ? 'btn btn-outline btn-success font-semibold' : 'btn font-medium btn-ghost'} to={'/my-foods'}>My Foods</NavLink></li>: ''
+            user ? <li><NavLink className={({ isActive }) => isActive ? 'btn btn-outline btn-success font-semibold' : 'btn font-medium btn-ghost'} to={'/my-food-request'}>My Food Request</NavLink></li> : ''
         }
 
         {
-            user?<li><NavLink className={({ isActive }) => isActive ? 'btn btn-outline btn-success font-semibold' : 'btn font-medium btn-ghost'} to={'/my-food-request'}>My Food Request</NavLink></li> : ''
-        }
-
-        {
-            !user? <li><NavLink className={({ isActive }) => isActive ? 'btn btn-outline btn-success font-semibold' : 'btn font-medium btn-ghost'} to={'/register'}>Register</NavLink></li> : ''
+            !user ? <li><NavLink className={({ isActive }) => isActive ? 'btn btn-outline btn-success font-semibold' : 'btn font-medium btn-ghost'} to={'/register'}>Register</NavLink></li> : ''
         }
 
         {/* {
