@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const FeaturedFood = ({ food }) => {
     const { user } = useContext(AuthContext)
-    console.log(food)
+    // console.log(food)
     return (
         <div>
             <div className="my-4">
@@ -42,15 +42,15 @@ const FeaturedFood = ({ food }) => {
                         <p className=""> <span className="font-medium">Expired Date : </span> {food.date}</p>
                     </div>
                     <div className=" pl-14  pr-4 justify-between pb-2">
-                        <p className="">
+                        <div>
                             {
                                 food.notes.length > 70 ?
-                                    <p> <span className="font-bold">Notes:</span> {food.notes.slice(0, 70)}..... </p>  :
+                                    <p> <span className="font-bold">Notes:</span> {food.notes.slice(0, 70)}..... </p> :
                                     <p>{food.notes}</p>
 
                             }
-                            </p>
-                    </div>            
+                        </div>
+                    </div>
 
                     <Link to={`/food-details/${food._id}`} className='text-red-400 font-medium pl-14 py-2 pb-8'>
                         <button className="btn btn-outline btn-success">View Details</button>

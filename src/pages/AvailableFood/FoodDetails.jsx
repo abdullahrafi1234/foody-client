@@ -35,7 +35,7 @@ const FoodDetails = () => {
     return (
         <div className='my-16 mb-32'>
             <Helmet>
-                <title>Foody | ViewDetails</title>
+                <title>Foody | Food Details</title>
             </Helmet>
 
             <div>

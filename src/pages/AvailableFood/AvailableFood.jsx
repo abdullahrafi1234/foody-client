@@ -13,7 +13,7 @@ const AvailableFood = () => {
     return (
         <div className='mb-24'>
             <Helmet>
-                <title>Foody | AvailableFood</title>
+                <title>Foody | Available Food</title>
             </Helmet>
             <div className="mt-20 text-center space-y-4 mb-6">
 
