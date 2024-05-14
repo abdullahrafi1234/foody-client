@@ -5,6 +5,7 @@ import { AuthContext } from '../../provider/AuthProvider';
 import { IoLocationOutline } from 'react-icons/io5';
 import Swal from 'sweetalert2';
 import { ToastContainer, toast } from 'react-toastify';
+import axios from 'axios';
 
 const FoodDetails = () => {
     const { user } = useContext(AuthContext)
@@ -13,7 +14,8 @@ const FoodDetails = () => {
     const navigate = useNavigate()
     const { foodName, quantity, location, date, notes, status, photo, _id, email, name, userImage } = food;
 
-    const handleRequest = e => {
+    const handleRequest = (e,) => {
+
         e.preventDefault()
         const form = e.target;
         const additionalNotes = form.additionalNotes.value;
@@ -22,6 +24,8 @@ const FoodDetails = () => {
         const amount = form.amount.value;
         const request = { foodName, quantity, location, date, additionalNotes, newStatus, photo, foodId, email, name, userImage, amount }
         console.log(request)
+
+       
 
 
         fetch('http://localhost:5000/request', {
@@ -34,9 +38,19 @@ const FoodDetails = () => {
                 console.log(data)
                 toast('Request Added Successfully')
                 navigate('/my-food-request')
-                
+
             })
     }
+
+    const handleStatus = async(id, preStatus, status) => {
+        console.log(id, preStatus, status)
+
+        const data = await axios.patch(`http://localhost:5000/addFood/${id}` ,{status}
+
+        ) 
+        console.log(data)
+    }
+
 
     return (
         <div className='my-16 mb-32'>
@@ -213,7 +227,7 @@ const FoodDetails = () => {
                                         {/* btn */}
 
                                         <div className="mt-8">
-                                            <input className="btn  btn-success btn-block text-white " type="submit" value="Request" />
+                                            <input onClick={() => handleStatus(_id, status, "Requested")} className="btn  btn-success btn-block text-white " type="submit" value="Request" />
 
                                         </div>
                                     </form>
