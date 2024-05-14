@@ -1,14 +1,16 @@
 import React, { useContext } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Link, useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../provider/AuthProvider';
 import { IoLocationOutline } from 'react-icons/io5';
 import Swal from 'sweetalert2';
+import { ToastContainer, toast } from 'react-toastify';
 
 const FoodDetails = () => {
     const { user } = useContext(AuthContext)
     const food = useLoaderData()
     // console.log(food)
+    const navigate = useNavigate()
     const { foodName, quantity, location, date, notes, status, photo, _id, email, name, userImage } = food;
 
     const handleRequest = e => {
@@ -30,6 +32,9 @@ const FoodDetails = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data)
+                toast('Request Added Successfully')
+                navigate('/my-food-request')
+                
             })
     }
 
@@ -38,6 +43,7 @@ const FoodDetails = () => {
             <Helmet>
                 <title>Foody | Food Details</title>
             </Helmet>
+            <ToastContainer />
 
             <div>
                 <p className="text-center font-bold text-3xl pb-4"> <span className='text-red-500'>Donar</span> Information </p>
@@ -78,11 +84,12 @@ const FoodDetails = () => {
                             {/* Open the modal using document.getElementById('ID').showModal() method */}
 
                             <button className="" onClick={() => document.getElementById('my_modal_5').showModal()}>
-                                <p className='mt-4'>
-                                    <Link >
-                                        <button className='btn btn-success btn-outline'>Food Request</button>
-                                    </Link>
-                                </p>
+                                <h3 className='mt-4'>
+
+                                    {/* <button className='btn btn-success btn-outline'>Food Request</button> */}
+                                    <p className='btn btn-success btn-outline'>Food Request</p>
+
+                                </h3>
                             </button>
                             <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
                                 <div className="modal-box">
@@ -198,7 +205,7 @@ const FoodDetails = () => {
                                                 </label>
                                                 <label className="input-group ">
                                                     <input type="text"
-                                                        name="amount" placeholder="00 $ " required className="input input-bordered w-full" />
+                                                        name="amount" placeholder="00 $ " className="input input-bordered w-full" />
                                                 </label>
                                             </div>
                                         </div>
