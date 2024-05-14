@@ -55,7 +55,7 @@ const Banner = () => {
                         <div className="hero p-8 rounded-3xl  border">
                             <div className="hero-content lg:h-[400px] md:h-[400px]  flex-col flex md:flex-row-reverse lg:flex-row-reverse ">
                                 <div className="lg:ml-36">
-                                    <img width={'1050px'} src="food1.avif" className=" rounded-lg" />
+                                    <img width={'1050px'} src="food2.jpeg" className=" rounded-lg" />
                                 </div>
                                 <div className="space-y-4 pl-12">
                                     <h1 className="text-5xl font-bold mb-8">From <span className='text-green-700'>Our</span> Kitchen to Your Table</h1>
@@ -78,7 +78,7 @@ const Banner = () => {
                         <div className="hero p-8 rounded-3xl  border">
                             <div className="hero-content lg:h-[400px] md:h-[400px]  flex-col flex md:flex-row-reverse lg:flex-row-reverse ">
                                 <div className="lg:ml-36">
-                                    <img width={'1050px'} src="food1.avif" className=" rounded-lg" />
+                                    <img width={'1050px'} src="food3.avif" className=" rounded-lg" />
                                 </div>
                                 <div className="space-y-4 pl-12">
                                     <h1 className="text-5xl font-bold mb-8">Simple <span className='text-green-700'>Way</span> of Eating Delicious</h1>
@@ -100,7 +100,7 @@ const Banner = () => {
                         <div className="hero p-8 rounded-3xl  border">
                             <div className="hero-content lg:h-[400px] md:h-[400px]  flex-col flex md:flex-row-reverse lg:flex-row-reverse ">
                                 <div className="lg:ml-36">
-                                    <img width={'1050px'} src="food1.avif" className=" rounded-lg" />
+                                    <img width={'1050px'} src="food4.avif" className=" rounded-lg" />
                                 </div>
                                 <div className="space-y-4 pl-12">
                                     <h1 className="text-5xl font-bold mb-8">Taste <span className='text-green-700'>Flavors</span> from Around the World</h1>
@@ -122,7 +122,7 @@ const Banner = () => {
                         <div className="hero p-8 rounded-3xl  border">
                             <div className="hero-content lg:h-[400px] md:h-[400px]  flex-col flex md:flex-row-reverse lg:flex-row-reverse ">
                                 <div className="lg:ml-36">
-                                    <img width={'1050px'} src="food1.avif" className=" rounded-lg" />
+                                    <img width={'1050px'} src="food5.jpg " className=" rounded-lg" />
                                 </div>
                                 <div className="space-y-4 pl-12">
                                     <h1 className="text-5xl font-bold mb-8">Fastest <span className='text-green-700'>Delivery</span> & Easy <span className='text-green-700'> Pickup</span> </h1>
