@@ -1,6 +1,7 @@
-import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut, updateProfile } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import app from "../firebase/firebase.config";
+import axios from "axios";
 
 
 
@@ -12,12 +13,20 @@ const AuthProvider = ({ children }) => {
 
     const provider = new GoogleAuthProvider();
 
-    const [user, setUser] = useState()
+    const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
 
-    const createUser = (email, password)=> {
+    const createUser = (email, password) => {
         setLoading(true)
         return createUserWithEmailAndPassword(auth, email, password)
+    }
+
+    const updateUserProfile = (name, photo) => {
+        setLoading(true)
+        return updateProfile(auth.currentUser, {
+            displayName: name,
+            photoURL: photo
+        })
     }
 
     const loginUser = (email, password) => {
@@ -30,29 +39,33 @@ const AuthProvider = ({ children }) => {
         return signInWithPopup(auth, provider)
     }
 
-    const logOut =() => {
+    const logOut = async () => {
         setLoading(true)
+        const { data } = await axios('http://localhost:5000/logout', { withCredentials: true })
+        console.log(data)
         return signOut(auth)
     }
 
-    useEffect( ()=> {
-       const unsubscribe = onAuthStateChanged(auth, currentUser => {
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser)
             setLoading(false)
             // console.log('current user', currentUser)
         });
-        return ()=> {
+        return () => {
             return unsubscribe()
         }
-    },[])
+    }, [])
 
     const authInfo = {
         user,
+        setUser,
         loading,
         createUser,
         loginUser,
         googleLogin,
-        logOut
+        logOut,
+        updateUserProfile
 
     }
 

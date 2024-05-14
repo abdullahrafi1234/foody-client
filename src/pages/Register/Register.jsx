@@ -3,19 +3,22 @@ import { Helmet } from "react-helmet-async";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 const Register = () => {
     const navigate = useNavigate()
 
-    const {createUser} = useContext(AuthContext)
+    const { createUser, updateUserProfile, setUser } = useContext(AuthContext)
 
     const [error, setError] = useState('')
 
     const handleRegister = e => {
         e.preventDefault()
         const form = e.target;
+        const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
+        const photo = form.photo.value;
         // console.log(email, password);
 
         setError('')
@@ -27,25 +30,41 @@ const Register = () => {
 
         // create user
         createUser(email, password)
-        .then(result => {
-            // console.log(result.user);
-            navigate('/')
-            Swal.fire({
-                title: 'Success!',
-                text: 'Created Your Successfully',
-                icon: 'success',
-                confirmButtonText: 'OK'
-              })
+            .then(result => {
 
-        })
-        .catch(error => {
-            console.log(error);
-        })
+                updateUserProfile(name, photo)
+                    .then(result => {
+                        // setUser(...user, name, photo)
+                        console.log(result)
+                        // window.location.reload()
+                    })
+                    .catch(error => {
+                        console.log(error)
+                    })
+
+                axios.post('http://localhost:5000/jwt', { email: result.user.email }, { withCredentials: true })
+                    .then(res => {
+                        console.log('token response', res.data)
+                    })
+
+                // console.log(result.user);
+                navigate('/')
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Created Your Successfully',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                })
+
+            })
+            .catch(error => {
+                console.log(error);
+            })
     }
 
     return (
         <div className=" ">
-             <Helmet>
+            <Helmet>
                 <title>Foody | Register</title>
             </Helmet>
 
@@ -83,7 +102,7 @@ const Register = () => {
                             <label className="label">
                                 <span className="label-text">Photo URL</span>
                             </label>
-                            <input type="text" name='photo' placeholder="Photo URL" className="input input-bordered" />
+                            <input type="text" name='photo' placeholder="Photo URL" className="input input-bordered" required />
                         </div>
 
                         <div className="form-control mt-6">

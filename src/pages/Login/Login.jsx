@@ -5,6 +5,7 @@ import { Helmet } from "react-helmet-async";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 const Login = () => {
     const { loginUser, googleLogin } = useContext(AuthContext)
@@ -20,6 +21,11 @@ const Login = () => {
 
         loginUser(email, password)
             .then(result => {
+                axios.post('http://localhost:5000/jwt', {email: result.user.email}, {withCredentials: true})
+                .then(res => {
+                    console.log('token response',res.data)
+                }) 
+
                 // console.log(result.user);
                 navigate(location?.state ? location.state : '/')
                 Swal.fire({
@@ -43,6 +49,11 @@ const Login = () => {
     const handleGoogleLogin = () => {
         googleLogin()
             .then(result => {
+                axios.post('http://localhost:5000/jwt', {email: result.user.email}, {withCredentials: true})
+                .then(res => {
+                    console.log('token response',res.data)
+                }) 
+
                 // console.log(result.user)
                 navigate(location?.state ? location.state : '/')
                 Swal.fire({

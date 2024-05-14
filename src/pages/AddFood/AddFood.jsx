@@ -23,10 +23,11 @@ const AddFood = () => {
 
         const addFood = { foodName, quantity, location, date, notes, status, photo, name, email, userImage }
 
-        fetch('https://eleven-assignment-server-mu.vercel.app/addFood', {
+        fetch('https://eleven-assignment-server-mu.vercel.app/addFood',{
             method: 'POST',
             headers: { 'content-type': 'application/json' },
-            body: JSON.stringify(addFood)
+            body: JSON.stringify(addFood),
+            withCredentials: true 
         })
             .then(res => res.json())
             .then(data => {
