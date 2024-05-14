@@ -23,7 +23,7 @@ const Router = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>,
-        loader: () => fetch('http://localhost:5000/addFood')
+        loader: () => fetch ('https://eleven-assignment-server-mu.vercel.app/addFood')
       },
       {
         path: '/login',
@@ -42,14 +42,14 @@ const Router = createBrowserRouter([
       {
         path: '/available-food',
         element: <AvailableFood></AvailableFood>,
-        loader: () => fetch('http://localhost:5000/addFood')
+        loader: () => fetch('https://eleven-assignment-server-mu.vercel.app/addFood')
       },
       {
         path: '/food-details/:id',
         element: <PrivateRoute>
           <FoodDetails></FoodDetails>
         </PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/addFood/${params.id}`)
+        loader: ({ params }) => fetch(`https://eleven-assignment-server-mu.vercel.app/addFood/${params.id}`)
       },
       {
         path: '/my-foods',
@@ -62,7 +62,7 @@ const Router = createBrowserRouter([
         element: <PrivateRoute>
           <UpdateFood></UpdateFood>
         </PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/addFood/${params.id}`)
+        loader: ({ params }) => fetch(`https://eleven-assignment-server-mu.vercel.app/addFood/${params.id}`)
       },
       {
         path: '/my-food-request',

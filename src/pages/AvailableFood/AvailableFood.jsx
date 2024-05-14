@@ -6,7 +6,7 @@ import { Helmet } from 'react-helmet-async';
 
 const AvailableFood = () => {
     const foods = useLoaderData()
-    console.log(foods)
+    // console.log(foods)
 
     const { user } = useContext(AuthContext)
 

@@ -10,17 +10,17 @@ const MyFoods = () => {
     const [foods, setFoods] = useState([])
 
     useEffect(() => {
-        fetch(`http://localhost:5000/addFoods/${user?.email}`)
+        fetch(`https://eleven-assignment-server-mu.vercel.app/addFoods/${user?.email}`)
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                // console.log(data)
                 setFoods(data)
             })
     }, [user])
 
 
     const handleDelete = _id => {
-        console.log(_id);
+        // console.log(_id);
         Swal.fire({
             title: "Are you sure?",
             // text: "You want to delete this!",
@@ -32,7 +32,7 @@ const MyFoods = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`http://localhost:5000/addFood/${_id}`, {
+                fetch(`https://eleven-assignment-server-mu.vercel.app/addFood/${_id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())

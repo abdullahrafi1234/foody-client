@@ -8,7 +8,7 @@ import Swal from "sweetalert2";
 const UpdateFood = () => {
     const { user } = useContext(AuthContext)
     const food = useLoaderData()
-    console.log(food)
+    // console.log(food)
     const { foodName, quantity, location, date, notes, status, photo, name, email, userImage, _id } = food;
 
     const handleUpdate = (e) => {
@@ -24,16 +24,16 @@ const UpdateFood = () => {
         const email = user?.email
 
         const updateFood = { foodName, quantity, location, date, notes, status, photo, email, }
-        console.log(updateFood)
+        // console.log(updateFood)
 
-        fetch(`http://localhost:5000/addFood/${_id}`, {
+        fetch(`https://eleven-assignment-server-mu.vercel.app/addFood/${_id}`, {
             method: 'PUT',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(updateFood)
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 if (data.modifiedCount) {
                     Swal.fire({
                         title: 'Success!',

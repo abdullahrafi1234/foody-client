@@ -16,11 +16,11 @@ const Login = () => {
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value
-        console.log(email, password,);
+        // console.log(email, password,);
 
         loginUser(email, password)
             .then(result => {
-                console.log(result.user);
+                // console.log(result.user);
                 navigate(location?.state ? location.state : '/')
                 Swal.fire({
                     title: 'Success!',
@@ -43,7 +43,7 @@ const Login = () => {
     const handleGoogleLogin = () => {
         googleLogin()
             .then(result => {
-                console.log(result.user)
+                // console.log(result.user)
                 navigate(location?.state ? location.state : '/')
                 Swal.fire({
                     title: 'Success!',

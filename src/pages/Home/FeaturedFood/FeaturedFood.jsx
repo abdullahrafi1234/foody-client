@@ -25,7 +25,9 @@ const FeaturedFood = ({ food }) => {
                     </figure>
 
                     <div className="pl-14 flex pt-8 gap-8">
-                        <p className="text-[#23BE0A] px-6 py-2 font-medium bg-[#23BE0A0D] rounded-xl">Status: {food.status}</p>
+
+                        {food.status === 'Available' ? <p className="text-[#23BE0A] px-6 py-2 font-medium bg-[#23BE0A0D] rounded-xl">Status: {food.status}</p> : <p className="text-red-500 px-6 py-2 font-medium bg-red-100 rounded-xl">Status: {food.status}</p>}
+                        
                     </div>
                     <div className=" py-4  pl-14">
                         <h2 className="text-xl font-bold">{food.foodName}</h2>

@@ -21,21 +21,22 @@ const FoodDetails = () => {
         const additionalNotes = form.additionalNotes.value;
         const newStatus = 'Requested'
         const foodId = _id
+        const email = user?.email
         const amount = form.amount.value;
         const request = { foodName, quantity, location, date, additionalNotes, newStatus, photo, foodId, email, name, userImage, amount }
-        console.log(request)
+        // console.log(request)
 
        
 
 
-        fetch('http://localhost:5000/request', {
+        fetch('https://eleven-assignment-server-mu.vercel.app/request', {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(request)
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                // console.log(data)
                 toast('Request Added Successfully')
                 navigate('/my-food-request')
 
@@ -43,12 +44,12 @@ const FoodDetails = () => {
     }
 
     const handleStatus = async(id, preStatus, status) => {
-        console.log(id, preStatus, status)
+        // console.log(id, preStatus, status)
 
-        const data = await axios.patch(`http://localhost:5000/addFood/${id}` ,{status}
+        const data = await axios.patch(`https://eleven-assignment-server-mu.vercel.app/addFood/${id}` ,{status}
 
         ) 
-        console.log(data)
+        // console.log(data)
     }
 
 
