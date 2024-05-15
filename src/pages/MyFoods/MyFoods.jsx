@@ -3,6 +3,7 @@ import { AuthContext } from "../../provider/AuthProvider";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
+import axios from "axios";
 
 
 const MyFoods = () => {
@@ -10,13 +11,23 @@ const MyFoods = () => {
     const [foods, setFoods] = useState([])
 
     useEffect(() => {
-        fetch(`https://eleven-assignment-server-mu.vercel.app/addFoods/${user?.email}`)
+
+        // getData()
+        fetch(`https://eleven-assignment-server-mu.vercel.app/addFoods/${user?.email}` )
             .then(res => res.json())
             .then(data => {
                 // console.log(data)
                 setFoods(data)
             })
     }, [user])
+
+    // const getData = async () => {
+    //     const { data } = await axios(`https://eleven-assignment-server-mu.vercel.app/addFoods/${user?.email}`,
+    //         // { withCredentials: true }
+
+    //     )
+    //     setFoods(data)
+    // }
 
 
     const handleDelete = _id => {
@@ -58,7 +69,7 @@ const MyFoods = () => {
 
     return (
         <div className="mt-12 mb-24">
-             <Helmet>
+            <Helmet>
                 <title>Foody | My Foods </title>
             </Helmet>
             <h3 className="text-4xl text-center font-bold mb-8 mt-20 md:mt-20 lg:mt-12">Total Foods You Added: {foods.length}</h3>

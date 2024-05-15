@@ -26,8 +26,7 @@ const AddFood = () => {
         fetch('https://eleven-assignment-server-mu.vercel.app/addFood',{
             method: 'POST',
             headers: { 'content-type': 'application/json' },
-            body: JSON.stringify(addFood),
-            withCredentials: true 
+            body: JSON.stringify(addFood)
         })
             .then(res => res.json())
             .then(data => {
