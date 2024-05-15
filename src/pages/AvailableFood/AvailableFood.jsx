@@ -1,15 +1,57 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../provider/AuthProvider';
 import FoodsCard from './FoodsCard';
 import { Helmet } from 'react-helmet-async';
+import axios from 'axios';
 
 const AvailableFood = () => {
-    const foods = useLoaderData()
+    // const foods = useLoaderData()
     // console.log(foods)
-
     const { user } = useContext(AuthContext)
-    
+
+    const [foods, setFoods] = useState([])
+    const [search, setSearch] = useState([])
+
+    useEffect(() => {
+        axios.get('https://eleven-assignment-server-mu.vercel.app/addFood')
+            .then(res => {
+                setFoods(res.data)
+                setSearch(res.data)
+            })
+    })
+
+
+    const [layout, setLayout] = useState(true)
+
+    const handleLayout = () => {
+        setLayout(!layout)
+    }
+
+
+    const handleSort = (sort) => {
+        if (sort === 'date') {
+            const sortedDate = search.slice().sort((a, b) => new Date(a.date) - new Date(b.date))
+            console.log(sortedDate)
+            setSearch(sortedDate)
+        }
+    }
+
+
+    const handleDescend = (descend) => {
+        if (descend === 'date') {
+            const sortedDate = search.slice().sort((a, b) => new Date(b.date) - new Date(a.date))
+            console.log(sortedDate)
+            setSearch(sortedDate)
+
+        }
+    }
+
+
+    const handleSearch = (e) => {
+        setSearch(foods.filter(f => f.foodName.toLowerCase().includes(e.target.value)))
+    }
+
 
     return (
         <div className='mb-24'>
@@ -39,7 +81,7 @@ const AvailableFood = () => {
                                     aria-label='Enter Job Title'
                                 />
 
-                                <button className='px-3 md:px-4 py-3 text-sm font-medium tracking-wider text-gray-100 uppercase transition-colors duration-300 transform bg-green-700 rounded-md hover:bg-green-500 focus:bg-green-600 focus:outline-none'>
+                                <button onChange={handleSearch} className='px-3 md:px-4 py-3 text-sm font-medium tracking-wider text-gray-100 uppercase transition-colors duration-300 transform bg-green-700 rounded-md hover:bg-green-500 focus:bg-green-600 focus:outline-none'>
                                     Search
                                 </button>
                             </div>
@@ -51,14 +93,22 @@ const AvailableFood = () => {
                                 className='border p-4 rounded-md'
                             >
                                 <option value=''>Sort By Expired Date</option>
-                                <option value='dsc'>Descending Order</option>
-                                <option value='asc'>Ascending Order</option>
+                                <option onClick={() => { handleDescend('date') }} value='dsc'>Descending Order</option>
+                                <option onClick={() => { handleSort('date') }} value='asc'>Ascending Order</option>
                             </select>
                         </div>
                         <button></button>
 
-                        <button className='btn btn-success btn-outline'>Reset</button>
+                        {/* <button className='btn btn-success btn-outline'>Reset</button> */}
+
+
+                        {
+                            layout?  <button onClick={handleLayout} className='btn btn-success btn-outline'>Two Card</button> :  <button onClick={handleLayout} className='btn btn-success btn-outline'>Three Card</button>
+                        }
+
+
                     </div>
+                    {/* hudai mt */}
                     <div className='grid grid-cols-1 gap-8 mt-0 xl:mt-16 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
                     </div>
                 </div>
@@ -66,9 +116,12 @@ const AvailableFood = () => {
             </div>
 
 
-            <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8">
-                {
+            <div className={layout? 'grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8' : 'grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-8'}>
+                {/* {
                     foods.filter(f => f.status === 'Available').map(food => <FoodsCard key={food._id} food={food}></FoodsCard>)
+                } */}
+                {
+                    search.map(food => food.status === 'Available' ? <FoodsCard key={food._id} food={food}></FoodsCard> : '')
                 }
             </div>
         </div>
