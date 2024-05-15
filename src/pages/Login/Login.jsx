@@ -21,9 +21,9 @@ const Login = () => {
 
         loginUser(email, password)
             .then(result => {
-                axios.post('http://localhost:5000/jwt', {email: result.user.email}, {withCredentials: true})
+                axios.post('https://eleven-assignment-server-mu.vercel.app/jwt', {email: result.user.email}, {withCredentials: true})
                 .then(res => {
-                    console.log('token response',res.data)
+                    // console.log('token response',res.data)
                 }) 
 
                 // console.log(result.user);
@@ -49,9 +49,9 @@ const Login = () => {
     const handleGoogleLogin = () => {
         googleLogin()
             .then(result => {
-                axios.post('http://localhost:5000/jwt', {email: result.user.email}, {withCredentials: true})
+                axios.post('https://eleven-assignment-server-mu.vercel.app/jwt', {email: result.user.email}, {withCredentials: true})
                 .then(res => {
-                    console.log('token response',res.data)
+                    // console.log('token response',res.data)
                 }) 
 
                 // console.log(result.user)

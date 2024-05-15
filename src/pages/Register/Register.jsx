@@ -35,16 +35,16 @@ const Register = () => {
                 updateUserProfile(name, photo)
                     .then(result => {
                         // setUser(...user, name, photo)
-                        console.log(result)
+                        // console.log(result)
                         // window.location.reload()
                     })
                     .catch(error => {
                         console.log(error)
                     })
 
-                axios.post('http://localhost:5000/jwt', { email: result.user.email }, { withCredentials: true })
+                axios.post('https://eleven-assignment-server-mu.vercel.app/jwt', { email: result.user.email }, { withCredentials: true })
                     .then(res => {
-                        console.log('token response', res.data)
+                        // console.log('token response', res.data)
                     })
 
                 // console.log(result.user);
