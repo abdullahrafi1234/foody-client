@@ -53,9 +53,8 @@ const Navbar = () => {
             !user ? <li><NavLink className={({ isActive }) => isActive ? 'btn btn-outline btn-success font-semibold' : 'btn font-medium btn-ghost'} to={'/register'}>Register</NavLink></li> : ''
         }
 
-        {/* {
-            user ? <li><NavLink to={'/update-profile'}>Update Profile</NavLink></li> : ''
-        } */}
+        <li><NavLink className={({ isActive }) => isActive ? 'btn btn-outline btn-success font-semibold' : 'btn font-medium btn-ghost'} to={'/contact'}>Contact Us</NavLink></li>
+
     </>
 
     return (

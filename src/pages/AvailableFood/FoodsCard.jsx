@@ -6,7 +6,7 @@ const FoodsCard = ({ food }) => {
     const { user } = useContext(AuthContext)
     return (
         <div>
-            <div className="my-4 mt-6">
+            <div className="my-4 mt-12">
                 <div className="card bg-base-100 shadow-xl ">
                     <div className='px-10 pt-4 flex gap-4 items-center'>
                         <img className='w-12 rounded-full' src={food.userImage || 'user.png'} alt="" />

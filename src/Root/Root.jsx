@@ -5,9 +5,11 @@ import { Outlet } from 'react-router-dom';
 
 const Root = () => {
     return (
-        <div className="mx-auto max-w-7xl workSans">
+        <div className="mx-auto  workSans">
             <Navbar></Navbar>
-            <Outlet></Outlet>
+            <div className="mx-auto max-w-[1440px] ">
+                <Outlet></Outlet>
+            </div>
             <Footer></Footer>
         </div>
     );

@@ -86,7 +86,7 @@ const AvailableFood = () => {
                                 </button>
                             </div>
                         </form>
-                        <div>
+                        {/* <div>
                             <select
                                 name='category'
                                 id='category'
@@ -96,14 +96,32 @@ const AvailableFood = () => {
                                 <option onClick={() => { handleDescend('date') }} value='dsc'>Descending Order</option>
                                 <option onClick={() => { handleSort('date') }} value='asc'>Ascending Order</option>
                             </select>
-                        </div>
+                        </div> */}
                         <button></button>
+
+                        <div className="flex-none">
+                            <ul className="menu menu-horizontal px-1">
+                                <li>
+                                    <details>
+                                        <summary>
+                                            Sort
+                                        </summary>
+                                        <ul className="p-2 bg-base-100 rounded-t-none">
+                                            <li onClick={() => { handleDescend('date') }}><a>Dsc</a></li>
+
+
+                                            <li onClick={() => { handleSort('date') }}><a>Asc</a></li>
+                                        </ul>
+                                    </details>
+                                </li>
+                            </ul>
+                        </div>
 
                         {/* <button className='btn btn-success btn-outline'>Reset</button> */}
 
 
                         {
-                            layout?  <button onClick={handleLayout} className='btn btn-success btn-outline'>Two Card</button> :  <button onClick={handleLayout} className='btn btn-success btn-outline'>Three Card</button>
+                            layout ? <button onClick={handleLayout} className='btn btn-success btn-outline'>Two Card</button> : <button onClick={handleLayout} className='btn btn-success btn-outline'>Three Card</button>
                         }
 
 
@@ -116,7 +134,7 @@ const AvailableFood = () => {
             </div>
 
 
-            <div className={layout? 'grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8' : 'grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-8'}>
+            <div className={layout ? 'grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8' : 'grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-24'}>
                 {/* {
                     foods.filter(f => f.status === 'Available').map(food => <FoodsCard key={food._id} food={food}></FoodsCard>)
                 } */}
