@@ -4,13 +4,6 @@
 
 https://eleven-assignment-4cccf.web.app/
 
-## Login Details
-
-- **Admin Email**: rafi2@gmail.com
-- **Admin Password**: 258258
-- **Delivery Man Email**: chatushkonbookshop@gmail.com
-- **Delivery Password**: 258258
-
 ## Features
 
 - * Explore a vast selection of foods, Each listing includes detailed descriptions, high-resolution images, and essential information such as amenities, pricing, and location.
